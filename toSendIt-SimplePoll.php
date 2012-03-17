@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Simple Polls
- * @version 1.0.3
+ * @version 1.0.4
  */
 /*
 Plugin Name: Simple Polls
 Plugin URI: http://wordpress.org/extend/plugins/simple-poll/
 Description: Plugin that allow admin to create infinite polls and registered users to express just one preference per poll.
 Author: toSend.it di Luisa Mara
-Version: 1.0.3
+Version: 1.0.4
 Author URI: http://tosend.it
 */
 
@@ -108,7 +108,7 @@ class toSendItSimplePoll{
 						<input id="simple-rate-rate_button" type="text" name="rate_button" value="<?php echo $rate_button ?>" />
 					</p>
 					<p>
-						<label for="simple-rate-already_rated">Rate button label:</label>
+						<label for="simple-rate-already_rated">Already rated message:</label>
 						<input id="simple-rate-already_rated" type="text" name="already_rated" value="<?php echo $already_rated ?>" />
 					</p>
 					<p>
