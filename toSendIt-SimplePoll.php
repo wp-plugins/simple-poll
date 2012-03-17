@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Simple Polls
- * @version 1.0
+ * @version 1.0.1
  */
 /*
 Plugin Name: Simple Polls
 Plugin URI: http://wordpress.org/extend/plugins/simple-poll/
 Description: Plugin that allow admin to create infinite polls and registered users to express just one preference per poll.
 Author: toSend.it di Luisa Mara
-Version: 1.0
+Version: 1.0.1
 Author URI: http://tosend.it
 */
 
@@ -72,7 +72,7 @@ class toSendItSimplePoll{
 		return $options;
 	}
 	
-	static function saveOptions($options){
+	static function saveOptions(){
 		$options = self::loadOptions();
 		if(isset($_POST) && count($_POST)>0){
 			$_POST = stripslashes_deep($_POST);
