@@ -3,7 +3,7 @@ Contributors: tosend.it
 Tags: Poll, Survey, Rating System, Score, Polling System, Voting System
 Requires at least: 3.3
 Tested up to: 3.3.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 Plugin that allow admin to create infinite polls and registered users to express just one preference per poll.
 
@@ -48,6 +48,9 @@ Let's see us what you did.
 
 = 1.0.2 (2012-03-17) =
 * Bugfix: waring on invalid pattern in preg_split
+
+= 1.0.3 (2012-03-17) =
+* Bugfix: Used StdClass Object as associative array
 
 == Upgrade Notice ==
 
