@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Simple Polls
- * @version 1.0.4
+ * @version 1.0.5
  */
 /*
 Plugin Name: Simple Polls
 Plugin URI: http://wordpress.org/extend/plugins/simple-poll/
 Description: Plugin that allow admin to create infinite polls and registered users to express just one preference per poll.
 Author: toSend.it di Luisa Mara
-Version: 1.0.4
+Version: 1.0.5
 Author URI: http://tosend.it
 */
 
@@ -315,7 +315,14 @@ class toSendItSimplePoll{
 				if($count=='0'){
 					# We have not voted yet
 					
-					if(isset($_POST) && count($_POST)>0 && isset($_POST['answer']) && is_numeric($_POST['answer'])){
+					if(isset($_POST) 
+							&& count($_POST)>0 
+							&& isset($_POST['answer']) 
+							&& is_numeric($_POST['answer'])
+							&& isset($_POST['poll'])
+							&& is_numeric($_POST['poll'])
+							&& $_POST['poll'] == $id
+						){
 						$answer = $_POST['answer'];
 						
 						$data= array(
@@ -337,6 +344,7 @@ class toSendItSimplePoll{
 									%s
 								</fieldset>
 								<p>
+									<input type="hidden" name="poll" value="%1$d" />
 									<input type="submit" value="%s" />
 								</p>
 							</form>
