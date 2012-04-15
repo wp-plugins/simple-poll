@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Simple Polls
- * @version 1.0.5
+ * @version 1.1.0
  */
 /*
 Plugin Name: Simple Polls
 Plugin URI: http://wordpress.org/extend/plugins/simple-poll/
 Description: Plugin that allow admin to create infinite polls and registered users to express just one preference per poll.
 Author: toSend.it di Luisa Mara
-Version: 1.0.5
+Version: 1.1.0
 Author URI: http://tosend.it
 */
 
@@ -69,6 +69,7 @@ class toSendItSimplePoll{
 		!isset($options['answers_label']) && $options['answers_label'] 				= 'Answers';
 		!isset($options['answer_structure']) && $options['answer_structure'] 		= '%s with %d rates';
 		!isset($options['most_rated']) && $options['most_rated']  					= 'Most rated';
+		!isset($options['show_who_rates']) && $options['show_who_rates']			= 'n';
 		return $options;
 	}
 	
@@ -99,7 +100,7 @@ class toSendItSimplePoll{
 		?>
 		<div class="wrap">
 			<div id="icon-options-general" class="icon32"><br /></div>
-			<h2>Simple Poll Settings</h2>
+			<h2>Simple Poll Settings (Ahahaha)</h2>
 			<form method="post" action="">
 				<fieldset>
 					<legend>Poll system labels</legend>
@@ -138,7 +139,18 @@ class toSendItSimplePoll{
 						<label for="simple-rate-most_rated">Most rated label:</label>
 						<input id="simple-rate-most_rated" type="text" name="most_rated" value="<?php echo $most_rated ?>" />
 					</p>
+					
 				</fieldset>
+				<fieldset>
+					<legend>Other poll options</legend>
+					<p>
+						<input type="radio" <?php echo ($show_who_rates=="y")?'checked="checked"':''?> name="show_who_rates" id="show_who_rates_y" value="y" />
+						<label for="show_who_rates_y" >Display users which has rated the poll (in admin area)</label>
+					</p>
+					<p>
+						<input type="radio" <?php echo ($show_who_rates=="n")?'checked="checked"':''?> name="show_who_rates" id="show_who_rates_n" value="n" />
+						<label for="show_who_rates_n">Do not display user list who has rated in admin area</label>
+					</p>
 				<p><input type="submit" class="button-primary" value="save" /></p>
 			</form>
 		</div>
@@ -149,7 +161,7 @@ class toSendItSimplePoll{
 		global $wpdb;
 		
 		$polls = $wpdb->prefix.self::POLLS;
-		$rates = $wpdb->prefix.self::RATES;
+		$tableRates = $wpdb->prefix.self::RATES;
 		if(isset($_POST) && count($_POST)>0){
 			$_POST = stripslashes_deep($_POST);
 			$wpdb->show_errors(true);
@@ -172,7 +184,7 @@ class toSendItSimplePoll{
 				$sql = "select * from $polls where id=$id";
 				
 				$row = $wpdb->get_row($sql);
-				$sql ="select count(id) voti from $rates where poll_id=$id";
+				$sql ="select count(id) voti from $tableRates where poll_id=$id";
 				$rates = $wpdb->get_var($sql, 0,0);
 				
 				?>
@@ -227,6 +239,29 @@ class toSendItSimplePoll{
 								</td>
 							</tr>
 							<?php 
+							$options = self::loadOptions();
+							
+							if($options['show_who_rates']=='y'){
+								?>
+								<tr>
+									<th>
+										<strong>Those users have rated:</strong>
+									</th>
+									<td>
+										<?php
+										$sql = "select user_id from $tableRates where poll_id = {$row->id}";
+										$subRows = $wpdb->get_results($sql);
+										foreach($subRows as $user){
+											$userInfo = get_user_by('id', $user->user_id);
+											echo '<span title="' . htmlspecialchars( $userInfo->display_name) .'">';
+											echo get_avatar($userInfo->ID, 64,'hello', $userInfo->display_name);
+											echo "</span>"; 
+										}
+										?><br />
+									</td>
+								</tr>
+								<?php
+							} 
 						}
 						?>
 					</table>

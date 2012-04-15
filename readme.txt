@@ -3,7 +3,7 @@ Contributors: tosend.it
 Tags: Poll, Survey, Rating System, Score, Polling System, Voting System
 Requires at least: 3.3
 Tested up to: 3.3.1
-Stable tag: 1.0.5
+Stable tag: 1.1.0
 
 Plugin that allow admin to create infinite polls and registered users to express just one preference per poll.
 
@@ -18,8 +18,9 @@ Each poll can expose infinite options but only one of them can be chosen.
 * One preference per user
 * Customizable text
 * Lightweight script
+* List of voters per poll
 
-Please take just few seconds to rate this plugin and tell the others if it works or not.
+Please take just few seconds to rate this plugin and tell the others how it works.
 
 == Installation ==
 
@@ -51,24 +52,27 @@ Let's see us what you did.
 
 == Changelog ==
 
-= 1.0 (2012-03-17) =
-* First release
-
-= 1.0.1 (2012-03-17) =
-* Removed unnecessary parameter to the saveOptions method
-
-= 1.0.2 (2012-03-17) =
-* Bugfix: waring on invalid pattern in preg_split
-
-= 1.0.3 (2012-03-17) =
-* Bugfix: Used StdClass Object as associative array
-
-= 1.0.4 (2012-03-17) =
-* Bugfix: Wrong defined label in Simple Poll Settings
+= 1.1.0 (2012-04-15) =
+* New: on each poll is available the list of the voters
 
 = 1.0.5 (2012-03-25) =
 * Improvement: Multiple polls per page are now allowed
 * New: added some answers in the FAQ.
+
+= 1.0.4 (2012-03-17) =
+* Bugfix: Wrong defined label in Simple Poll Settings
+
+= 1.0.3 (2012-03-17) =
+* Bugfix: Used StdClass Object as associative array
+
+= 1.0.2 (2012-03-17) =
+* Bugfix: waring on invalid pattern in preg_split
+
+= 1.0.1 (2012-03-17) =
+* Removed unnecessary parameter to the saveOptions method
+
+= 1.0 (2012-03-17) =
+* First release
 
 == Upgrade Notice ==
 
