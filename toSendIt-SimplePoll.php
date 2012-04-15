@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Simple Polls
- * @version 1.1.0
+ * @version 1.1.1
  */
 /*
 Plugin Name: Simple Polls
 Plugin URI: http://wordpress.org/extend/plugins/simple-poll/
 Description: Plugin that allow admin to create infinite polls and registered users to express just one preference per poll.
 Author: toSend.it di Luisa Mara
-Version: 1.1.0
+Version: 1.1.1
 Author URI: http://tosend.it
 */
 
@@ -305,7 +305,7 @@ class toSendItSimplePoll{
 						<?php
 						
 						foreach($results as $row){
-							$sql = "select count(id) from $rates where poll_id = $row->id";
+							$sql = "select count(id) from $tableRates where poll_id = $row->id";
 							$rating = $wpdb->get_var($sql, 0,0); 
 							?>
 							<tr <?php echo ($row->since>date('Y-m-d H:i:s'))?'class="expired"':'' ?>>

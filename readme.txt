@@ -3,7 +3,7 @@ Contributors: tosend.it
 Tags: Poll, Survey, Rating System, Score, Polling System, Voting System
 Requires at least: 3.3
 Tested up to: 3.3.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 
 Plugin that allow admin to create infinite polls and registered users to express just one preference per poll.
 
@@ -51,6 +51,9 @@ We trust the plugin is really simple but, if it is too complicated for you, plea
 Let's see us what you did.
 
 == Changelog ==
+
+= 1.1.1 (2012-04-15) =
+* Bugfix: the list of polls does not show anymore the number of preferences
 
 = 1.1.0 (2012-04-15) =
 * New: on each poll is available the list of the voters
